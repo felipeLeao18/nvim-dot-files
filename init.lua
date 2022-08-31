@@ -9,4 +9,4 @@ require('flp.treesitter')
 require('flp.vim-tree')
 require('flp.gitsigns')
 require('flp.neoscroll')
-
+require('flp.lsp')
