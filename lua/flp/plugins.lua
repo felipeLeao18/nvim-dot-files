@@ -85,9 +85,15 @@ return packer.startup(function(use)
     },
     tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
-  
+    -- Git
     use "lewis6991/gitsigns.nvim"
   
+    -- Colorschemes
+    use "lunarvim/colorschemes"
+    
+    -- neoscroll
+    use 'karb94/neoscroll.nvim'
+
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
     require("packer").sync()
