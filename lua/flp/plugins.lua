@@ -46,7 +46,8 @@ return packer.startup(function(use)
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use "arcticicestudio/nord-vim"
   use "windwp/nvim-autopairs"
-  use 'sainnhe/everforest' 
+  use 'sainnhe/everforest'
+    -- telescope
   use {
       "nvim-telescope/telescope.nvim",
       requires = {
@@ -56,7 +57,37 @@ return packer.startup(function(use)
         {"nvim-telescope/telescope-ui-select.nvim"}
       }
     }
-  --sainnhe/everforest Automatically set up your configuration after cloning packer.nvim
+     -- cokeline
+     use(
+      {
+        "noib3/nvim-cokeline",
+        requires = "kyazdani42/nvim-web-devicons" -- If you want devicons
+      }
+    )
+     -- Treesitter
+    use {
+      "nvim-treesitter/nvim-treesitter",
+      run = ":TSUpdate",
+      requires = {
+        {"nvim-treesitter/nvim-treesitter-textobjects", commit = "b00b344c0f5a0a458d6e66eb570cfb347ebf4c38"},
+        --{"nvim-treesitter/nvim-treesitter-textobjects"},
+        {"RRethy/nvim-treesitter-textsubjects"},
+        {"nvim-treesitter/playground", opt = true},
+        {"lewis6991/nvim-treesitter-context"},
+        {"p00f/nvim-ts-rainbow"}
+      }
+    }
+    -- nvim tree
+    use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icons
+    },
+    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  }
+  
+    use "lewis6991/gitsigns.nvim"
+  
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
     require("packer").sync()
