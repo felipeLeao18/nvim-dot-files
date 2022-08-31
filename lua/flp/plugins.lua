@@ -96,7 +96,31 @@ return packer.startup(function(use)
     
     -- neoscroll
     use 'karb94/neoscroll.nvim'
+    use({
+        "glepnir/lspsaga.nvim",
+        branch = "main",
+        config = function()
+            local saga = require("lspsaga")
 
+            saga.init_lsp_saga({
+                -- your configuration
+            })
+        end,
+    })
+    -- Nvim cmp
+    use {
+      "hrsh7th/nvim-cmp",
+      as = "cmp",
+      requires = {
+        {"onsails/lspkind-nvim"},
+        {"hrsh7th/cmp-nvim-lsp", requires = {"neovim/nvim-lspconfig"}},
+        {"hrsh7th/cmp-buffer"},
+        {"hrsh7th/cmp-path"},
+        {"f3fora/cmp-spell"},
+        {"hrsh7th/cmp-nvim-lsp-signature-help"},
+        {"tzachar/cmp-tabnine", run = "./install.sh"}
+      }
+    }
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
     require("packer").sync()
