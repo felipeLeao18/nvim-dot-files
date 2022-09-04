@@ -51,8 +51,8 @@ require('lspconfig')['rust_analyzer'].setup {
   settings = {
     ["rust-analyzer"] = {}
   }
-
 }
+ require'lspconfig'.gopls.setup{}
 
 require('lspconfig')['eslint'].setup {
     on_attach = function(client)
