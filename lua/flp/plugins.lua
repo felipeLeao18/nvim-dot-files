@@ -124,7 +124,7 @@ return packer.startup(function(use)
     end,
     requires = {"nvim-lua/plenary.nvim"}
   })
-
+  use "folke/zen-mode.nvim"
   use {"akinsho/toggleterm.nvim", tag = '*'}
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then require("packer").sync() end

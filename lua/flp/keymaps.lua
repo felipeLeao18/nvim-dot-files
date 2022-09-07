@@ -70,3 +70,6 @@ keymap("n", "<leader>h", ":noh<cr>", opts)
 
 -- Lazy-git
 keymap("n", "<leader>gg", ":LazyGit<cr>", opts)
+
+-- zen-mode
+keymap("n", "<leader>z", ":ZenMode<cr>", opts)
