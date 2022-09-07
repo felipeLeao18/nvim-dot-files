@@ -1,6 +1,6 @@
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap = true, silent = true }
+local opts = {noremap = true, silent = true}
 vim.keymap.set('n', '<space>di', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
@@ -14,7 +14,7 @@ local on_attach = function(client, bufnr)
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  local bufopts = {noremap = true, silent = true, buffer = bufnr}
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
@@ -34,36 +34,51 @@ end
 
 local lsp_flags = {
   -- This is the default in Nvim 0.7+
-  debounce_text_changes = 150,
+  debounce_text_changes = 150
 }
-require('lspconfig')['pyright'].setup {
-  on_attach = on_attach,
-  flags = lsp_flags,
-}
-require('lspconfig')['tsserver'].setup {
-  on_attach = on_attach,
-  flags = lsp_flags,
-}
+require('lspconfig')['pyright'].setup {on_attach = on_attach, flags = lsp_flags}
+require('lspconfig')['tsserver'].setup {on_attach = on_attach, flags = lsp_flags}
 require('lspconfig')['rust_analyzer'].setup {
   on_attach = on_attach,
   flags = lsp_flags,
   -- Server-specific settings...
-  settings = {
-    ["rust-analyzer"] = {}
-  }
+  settings = {["rust-analyzer"] = {}}
 }
- require'lspconfig'.gopls.setup{}
+require'lspconfig'.gopls.setup {}
 
 require('lspconfig')['eslint'].setup {
-    on_attach = function(client)
-      client.resolved_capabilities.document_formatting = true
+  on_attach = function(client)
+    client.resolved_capabilities.document_formatting = true
 
-      local autogroup_eslint_lsp = vim.api.nvim_create_augroup("eslint_lsp", { clear = true })
+    local autogroup_eslint_lsp = vim.api.nvim_create_augroup("eslint_lsp", {clear = true})
 
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        pattern = "*",
-        command = "EslintFixAll",
-        group = autogroup_eslint_lsp,
-      })
-    end
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      pattern = "*",
+      command = "EslintFixAll",
+      group = autogroup_eslint_lsp
+    })
+  end
+}
+
+require('lspconfig')['sumneko_lua'].setup {
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT'
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'}
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true)
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {enable = false}
+    }
   }
+}
+
+require'lspconfig'.ccls.setup {}

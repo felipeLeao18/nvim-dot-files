@@ -4,12 +4,7 @@ local fn = vim.fn
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system {
-    "git",
-    "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
+    "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path
   }
   print "Installing packer close and reopen Neovim..."
   vim.cmd [[packadd packer.nvim]]
@@ -25,17 +20,15 @@ vim.cmd [[
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-  return
-end
+if not status_ok then return end
 
 -- Have packer use a popup window
 packer.init {
   display = {
     open_fn = function()
-      return require("packer.util").float { border = "rounded" }
-    end,
-  },
+      return require("packer.util").float {border = "rounded"}
+    end
+  }
 }
 
 -- Install your plugins here
@@ -50,79 +43,89 @@ return packer.startup(function(use)
   use "arcticicestudio/nord-vim"
   use "windwp/nvim-autopairs"
   use 'sainnhe/everforest'
-    -- telescope
+  -- telescope
   use {
-      "nvim-telescope/telescope.nvim",
-      requires = {
-        {"nvim-telescope/telescope-fzf-native.nvim", run = "make"},
-        {"nvim-telescope/telescope-file-browser.nvim"},
-        {"kyazdani42/nvim-web-devicons"},
-        {"nvim-telescope/telescope-ui-select.nvim"}
-      }
+    "nvim-telescope/telescope.nvim",
+    requires = {
+      {"nvim-telescope/telescope-fzf-native.nvim", run = "make"},
+      {"nvim-telescope/telescope-file-browser.nvim"}, {"kyazdani42/nvim-web-devicons"},
+      {"nvim-telescope/telescope-ui-select.nvim"}
     }
-     -- cokeline
-     use(
+  }
+  -- cokeline
+  use({
+    "noib3/nvim-cokeline",
+    requires = "kyazdani42/nvim-web-devicons" -- If you want devicons
+  })
+  -- Treesitter
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+    requires = {
       {
-        "noib3/nvim-cokeline",
-        requires = "kyazdani42/nvim-web-devicons" -- If you want devicons
-      }
-    )
-     -- Treesitter
-    use {
-      "nvim-treesitter/nvim-treesitter",
-      run = ":TSUpdate",
-      requires = {
-        {"nvim-treesitter/nvim-treesitter-textobjects", commit = "b00b344c0f5a0a458d6e66eb570cfb347ebf4c38"},
-        --{"nvim-treesitter/nvim-treesitter-textobjects"},
-        {"RRethy/nvim-treesitter-textsubjects"},
-        {"nvim-treesitter/playground", opt = true},
-        {"lewis6991/nvim-treesitter-context"},
-        {"p00f/nvim-ts-rainbow"}
-      }
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        commit = "b00b344c0f5a0a458d6e66eb570cfb347ebf4c38"
+      }, -- {"nvim-treesitter/nvim-treesitter-textobjects"},
+      {"RRethy/nvim-treesitter-textsubjects"}, {"nvim-treesitter/playground", opt = true},
+      {"lewis6991/nvim-treesitter-context"}, {"p00f/nvim-ts-rainbow"}
     }
-    -- nvim tree
-    use {
+  }
+  -- nvim tree
+  use {
     'kyazdani42/nvim-tree.lua',
     requires = {
-      'kyazdani42/nvim-web-devicons', -- optional, for file icons
+      'kyazdani42/nvim-web-devicons' -- optional, for file icons
     },
     tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
-    -- Git
-    use "lewis6991/gitsigns.nvim"
-  
-    -- Colorschemes
-    use "lunarvim/colorschemes"
-    
-    -- neoscroll
-    use 'karb94/neoscroll.nvim'
-    use({
-        "glepnir/lspsaga.nvim",
-        branch = "main",
-        config = function()
-            local saga = require("lspsaga")
+  -- Git
+  use "lewis6991/gitsigns.nvim"
 
-            saga.init_lsp_saga({
-                -- your configuration
-            })
-        end,
-    })
-    -- Nvim cmp
-    use {
-      "hrsh7th/nvim-cmp",
-      as = "cmp",
-      requires = {
-        {"onsails/lspkind-nvim"},
-        {"hrsh7th/cmp-nvim-lsp", requires = {"neovim/nvim-lspconfig"}},
-        {"hrsh7th/cmp-buffer"},
-        {"hrsh7th/cmp-path"},
-        {"f3fora/cmp-spell"},
-        {"hrsh7th/cmp-nvim-lsp-signature-help"},
-        {"tzachar/cmp-tabnine", run = "./install.sh"}
-      }
+  -- Colorschemes
+  use "lunarvim/colorschemes"
+
+  -- neoscroll
+  use 'karb94/neoscroll.nvim'
+  use({
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    config = function()
+      local saga = require("lspsaga")
+
+      saga.init_lsp_saga({
+        -- your configuration
+      })
+    end
+  })
+  -- Nvim cmp
+  use {
+    "hrsh7th/nvim-cmp",
+    as = "cmp",
+    requires = {
+      {"onsails/lspkind-nvim"}, {"hrsh7th/cmp-nvim-lsp", requires = {"neovim/nvim-lspconfig"}},
+      {"hrsh7th/cmp-buffer"}, {"hrsh7th/cmp-path"}, {"f3fora/cmp-spell"},
+      {"hrsh7th/cmp-nvim-lsp-signature-help"}, {"tzachar/cmp-tabnine", run = "./install.sh"}
     }
+  }
+
+  -- multi-cursors
+  use "mg979/vim-visual-multi"
+  -- Lazygit
+  use 'kdheepak/lazygit.nvim'
+  -- comments
+  use 'terrortylor/nvim-comment'
+
+  use 'onsails/lspkind.nvim'
+
+  use({
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+      require("null-ls").setup()
+    end,
+    requires = {"nvim-lua/plenary.nvim"}
+  })
+
+  use {"akinsho/toggleterm.nvim", tag = '*'}
   -- Put this at the end after all plugins
-  if PACKER_BOOTSTRAP then
-    require("packer").sync()
-  end
+  if PACKER_BOOTSTRAP then require("packer").sync() end
 end)
