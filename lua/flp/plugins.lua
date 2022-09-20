@@ -57,6 +57,9 @@ return packer.startup(function(use)
     "noib3/nvim-cokeline",
     requires = "kyazdani42/nvim-web-devicons" -- If you want devicons
   })
+
+  -- bdelete
+  use "Asheq/close-buffers.vim"
   -- Treesitter
   use {
     "nvim-treesitter/nvim-treesitter",
@@ -86,17 +89,7 @@ return packer.startup(function(use)
 
   -- neoscroll
   use 'karb94/neoscroll.nvim'
-  use({
-    "glepnir/lspsaga.nvim",
-    branch = "main",
-    config = function()
-      local saga = require("lspsaga")
-
-      saga.init_lsp_saga({
-        -- your configuration
-      })
-    end
-  })
+  use({"glepnir/lspsaga.nvim", branch = "main"})
   -- Nvim cmp
   use {
     "hrsh7th/nvim-cmp",
@@ -104,7 +97,8 @@ return packer.startup(function(use)
     requires = {
       {"onsails/lspkind-nvim"}, {"hrsh7th/cmp-nvim-lsp", requires = {"neovim/nvim-lspconfig"}},
       {"hrsh7th/cmp-buffer"}, {"hrsh7th/cmp-path"}, {"f3fora/cmp-spell"},
-      {"hrsh7th/cmp-nvim-lsp-signature-help"}, {"tzachar/cmp-tabnine", run = "./install.sh"}
+      {"hrsh7th/cmp-nvim-lsp-signature-help"}, {"tzachar/cmp-tabnine", run = "./install.sh"},
+      {"saadparwaiz1/cmp_luasnip"}
     }
   }
 
@@ -126,6 +120,20 @@ return packer.startup(function(use)
   })
   use "folke/zen-mode.nvim"
   use {"akinsho/toggleterm.nvim", tag = '*'}
+  use "rafamadriz/friendly-snippets"
+  use {"L3MON4D3/LuaSnip"}
+  use "morhetz/gruvbox"
+  use "tpope/vim-surround"
+  use {
+    'akinsho/git-conflict.nvim',
+    tag = "*",
+    config = function()
+      require('git-conflict').setup()
+    end
+  }
+  use "ThePrimeagen/vim-be-good"
+  -- Packer
   -- Put this at the end after all plugins
+  use "pope/vim-surround"
   if PACKER_BOOTSTRAP then require("packer").sync() end
 end)

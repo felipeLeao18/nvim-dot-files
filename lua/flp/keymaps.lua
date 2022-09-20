@@ -25,6 +25,8 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
+keymap("n", "<leader>w", ":w <CR>", opts)
+
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)
 keymap("n", "<C-Down>", ":resize -2<CR>", opts)
@@ -35,6 +37,10 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<S-x>", ":bdelete<CR>", opts)
+keymap("n", "gb", "<Plug>(cokeline-pick-focus)", {silent = true})
+keymap("n", "<leader>bc", "<Plug>(cokeline-pick-close)", {silent = true})
+keymap("n", "<leader>bca", ":Bdelete other<cr>", {silent = true})
+keymap("n", "<leader>bch", ":Bdelete hidden<cr>", {silent = true})
 
 -- Insert --
 -- Press jk fast to enter
@@ -73,3 +79,5 @@ keymap("n", "<leader>gg", ":LazyGit<cr>", opts)
 
 -- zen-mode
 keymap("n", "<leader>z", ":ZenMode<cr>", opts)
+
+keymap("n", "<leader>gb", ":Gitsigns blame_line<CR>", opts)

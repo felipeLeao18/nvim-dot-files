@@ -1,6 +1,7 @@
+require('flp.plugins')
+require('flp.luasnip')
 require('flp.options')
 require('flp.keymaps')
-require('flp.plugins')
 require('flp.colorscheme')
 require('flp.telescope')
 require('flp.autopairs')
