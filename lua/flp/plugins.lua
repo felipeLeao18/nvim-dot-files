@@ -38,6 +38,9 @@ return packer.startup(function(use)
   use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
   use "wbthomason/packer.nvim" -- Have packer manage itself
 
+use  'leafgarland/typescript-vim'
+use  'peitalin/vim-jsx-typescript'
+
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use "arcticicestudio/nord-vim"
@@ -70,7 +73,8 @@ return packer.startup(function(use)
         commit = "b00b344c0f5a0a458d6e66eb570cfb347ebf4c38"
       }, -- {"nvim-treesitter/nvim-treesitter-textobjects"},
       {"RRethy/nvim-treesitter-textsubjects"}, {"nvim-treesitter/playground", opt = true},
-      {"lewis6991/nvim-treesitter-context"}, {"p00f/nvim-ts-rainbow"}
+      {"lewis6991/nvim-treesitter-context"}, {"p00f/nvim-ts-rainbow"},
+      {"windwp/nvim-ts-autotag"}
     }
   }
   -- nvim tree
@@ -124,6 +128,7 @@ return packer.startup(function(use)
   use {"L3MON4D3/LuaSnip"}
   use "morhetz/gruvbox"
   use "tpope/vim-surround"
+  use 'alvan/vim-closetag'
   use {
     'akinsho/git-conflict.nvim',
     tag = "*",
@@ -134,6 +139,5 @@ return packer.startup(function(use)
   use "ThePrimeagen/vim-be-good"
   -- Packer
   -- Put this at the end after all plugins
-  use "pope/vim-surround"
   if PACKER_BOOTSTRAP then require("packer").sync() end
 end)
