@@ -1,5 +1,5 @@
 require("luasnip/loaders/from_vscode").lazy_load()
-
+require("luasnip.loaders.from_snipmate").lazy_load()
 vim.api.nvim_set_keymap("i", "<A-l>", "<Plug>luasnip-next-choice", {})
 vim.api.nvim_set_keymap("s", "<A-l>", "<Plug>luasnip-next-choice", {})
 

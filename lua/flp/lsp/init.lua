@@ -8,9 +8,18 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+local function on_attach(client, bufnr)
+    -- Find the clients capabilities
+    local cap = client.server_capabilities
+
+    -- Only highlight if compatible with the language
+    if cap.document_highlight then
+        vim.cmd('augroup LspHighlight')
+        vim.cmd('autocmd!')
+        vim.cmd('autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()')
+        vim.cmd('autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()')
+        vim.cmd('augroup END')
+    end
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -57,10 +66,13 @@ require'lspconfig'.gopls.setup {}
 local capabilitiesClang = vim.lsp.protocol.make_client_capabilities()
 capabilitiesClang.offsetEncoding = {"utf-16"}
 require("lspconfig").clangd.setup({capabilities = capabilitiesClang})
-
+require'lspconfig'.cssls.setup {
+  capabilities = capabilities,
+}
+require'lspconfig'.html.setup{}
 require('lspconfig')['eslint'].setup {
   on_attach = function(client)
-    client.resolved_capabilities.document_formatting = true
+    client.server_capabilities.document_formatting = true
 
     local autogroup_eslint_lsp = vim.api.nvim_create_augroup("eslint_lsp", {clear = true})
 

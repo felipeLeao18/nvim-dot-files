@@ -1,5 +1,8 @@
 local configs = require("nvim-treesitter.configs")
 configs.setup {
+  autotag = {
+    enable = true
+  },
   ensure_installed = "all",
   sync_install = false, 
   ignore_install = { "phpdoc" }, -- List of parsers to ignore installing
