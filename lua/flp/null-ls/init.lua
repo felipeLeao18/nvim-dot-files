@@ -11,7 +11,7 @@ null_ls.setup({
         '--break-after-table-lb', '--indent-width=2'
       }
     }), formatting.isort, formatting.codespell.with({filetypes = {'markdown'}}),
-    diagnostics.eslint_d, actions.eslint_d, actions.gofmt, 
+    diagnostics.eslint_d, actions.eslint_d
   },
   on_attach = function(client)
     if client.server_capabilities.document_formatting then

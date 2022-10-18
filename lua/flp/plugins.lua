@@ -137,6 +137,17 @@ use  'peitalin/vim-jsx-typescript'
     end
   }
   use "ThePrimeagen/vim-be-good"
+  use {
+  "nvim-neotest/neotest",
+  requires = {
+    "nvim-lua/plenary.nvim",
+    "nvim-treesitter/nvim-treesitter",
+    "antoinemadec/FixCursorHold.nvim",
+      'haydenmeade/neotest-jest'
+  }
+}
+  use "xiyaowong/nvim-transparent"
+
   -- Packer
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then require("packer").sync() end
