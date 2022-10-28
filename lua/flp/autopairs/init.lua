@@ -82,7 +82,3 @@ npairs.add_rules {
     end
   ):set_end_pair_length(0):with_move(cond.none()):with_del(cond.none())
 }
-
-    Rule('%(.*%)%s*%=>$', ' {  }', { 'typescript', 'typescriptreact', 'javascript' })
-        :use_regex(true)
-        :set_end_pair_length(2)

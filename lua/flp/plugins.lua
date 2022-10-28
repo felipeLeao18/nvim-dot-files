@@ -37,7 +37,9 @@ return packer.startup(function(use)
   -- LSP
   use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
   use "wbthomason/packer.nvim" -- Have packer manage itself
-
+use {
+  'nvim-lualine/lualine.nvim',
+}
 use  'leafgarland/typescript-vim'
 use  'peitalin/vim-jsx-typescript'
 
@@ -58,7 +60,11 @@ use  'peitalin/vim-jsx-typescript'
   -- cokeline
   use({
     "noib3/nvim-cokeline",
-    requires = "kyazdani42/nvim-web-devicons" -- If you want devicons
+        requires = {
+       {"kyazdani42/nvim-web-devicons"}
+    }
+
+
   })
 
   -- bdelete
@@ -99,11 +105,15 @@ use  'peitalin/vim-jsx-typescript'
     "hrsh7th/nvim-cmp",
     as = "cmp",
     requires = {
-      {"onsails/lspkind-nvim"}, {"hrsh7th/cmp-nvim-lsp", requires = {"neovim/nvim-lspconfig"}},
-      {"hrsh7th/cmp-buffer"}, {"hrsh7th/cmp-path"}, {"f3fora/cmp-spell"},
-      {"hrsh7th/cmp-nvim-lsp-signature-help"}, {"tzachar/cmp-tabnine", run = "./install.sh"},
-      {"saadparwaiz1/cmp_luasnip"}
-    }
+    {"onsails/lspkind-nvim"},
+        {"hrsh7th/cmp-nvim-lsp", requires = {"neovim/nvim-lspconfig"}},
+        {"hrsh7th/cmp-buffer"},
+        {"saadparwaiz1/cmp_luasnip"},
+        {"hrsh7th/cmp-path"},
+        {"f3fora/cmp-spell"},
+        {"hrsh7th/cmp-nvim-lsp-signature-help"},
+        {"tzachar/cmp-tabnine", run = "./install.sh"},
+        {"rcarriga/cmp-dap"}}
   }
 
   -- multi-cursors
@@ -146,8 +156,15 @@ use  'peitalin/vim-jsx-typescript'
       'haydenmeade/neotest-jest'
   }
 }
-  use "xiyaowong/nvim-transparent"
-
+   -- DAP
+    use {"mfussenegger/nvim-dap"}
+    use {"rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}}
+    use {"mxsdev/nvim-dap-vscode-js", requires = {"mfussenegger/nvim-dap"}}
+    use {
+      "microsoft/vscode-js-debug",
+      opt = true,
+      run = "npm install --legacy-peer-deps && npm run compile"
+    }
   -- Packer
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then require("packer").sync() end
