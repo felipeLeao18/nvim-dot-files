@@ -165,6 +165,15 @@ use  'peitalin/vim-jsx-typescript'
       opt = true,
       run = "npm install --legacy-peer-deps && npm run compile"
     }
+  use({
+	"Pocco81/auto-save.nvim",
+	config = function()
+		 require("auto-save").setup {
+			-- your config goes here
+			-- or just leave it empty :)
+		 }
+	end,
+})
   -- Packer
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then require("packer").sync() end
