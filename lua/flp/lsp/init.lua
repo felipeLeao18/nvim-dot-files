@@ -107,3 +107,5 @@ require('lspconfig')['sumneko_lua'].setup {
     }
   }
 }
+
+require('lspconfig')['prismals'].setup{}
