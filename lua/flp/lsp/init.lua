@@ -83,6 +83,9 @@ require('lspconfig')['eslint'].setup {
     })
   end
 }
+require('lspconfig')['prismals'].setup{
+  on_attach = on_attach
+}
 
 require('lspconfig')['sumneko_lua'].setup {
   settings = {

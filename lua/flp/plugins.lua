@@ -165,6 +165,9 @@ use  'peitalin/vim-jsx-typescript'
       opt = true,
       run = "npm install --legacy-peer-deps && npm run compile"
     }
+  use 'lewis6991/impatient.nvim'
+  use 'Mofiqul/dracula.nvim'
+  use({ 'rose-pine/neovim', as = 'rose-pine' })
   -- Packer
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then require("packer").sync() end
