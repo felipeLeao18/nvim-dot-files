@@ -8,6 +8,6 @@ require("nvim-tree").setup({
     mappings = {list = {{key = "u", action = "dir_up"}}}
   },
   renderer = {group_empty = true},
-  filters = {custom = {'node_modules'}, dotfiles = false},
+  filters = {dotfiles = false},
   git = {enable = true, ignore = false, show_on_dirs = true, timeout = 400}
 })
