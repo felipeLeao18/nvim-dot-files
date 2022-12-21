@@ -8,7 +8,7 @@ require("zen-mode").setup {
   plugins = {
     options = {enabled = true, ruler = false, showcmd = false},
     twilight = {enabled = true},
-    gitsigns = {enabled = false},
-    tmux = {enabled = false}
+    gitsigns = {enabled = true},
+    tmux = {enabled = true}
   }
 }

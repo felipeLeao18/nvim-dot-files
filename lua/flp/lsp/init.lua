@@ -25,7 +25,7 @@ local function on_attach(client, bufnr)
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   -- local bufopts = {noremap = true, silent = true, buffer = bufnr}
   -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', 'gD', vim.lsp.buf.definition, bufopts)
   -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   -- vim.keymap.set('n', '<space>gti', vim.lsp.buf.implementation, bufopts)
   -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
@@ -104,4 +104,9 @@ require('lspconfig')['sumneko_lua'].setup {
   }
 }
 
-require('lspconfig')['prismals'].setup{}
+require('lspconfig')['prismals'].setup{
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = lsp_flags
+}
+require'lspconfig'.jsonls.setup{}
