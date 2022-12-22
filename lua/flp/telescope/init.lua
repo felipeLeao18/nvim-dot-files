@@ -7,6 +7,7 @@ local actions = require("telescope.actions")
 
 telescope.setup {
   defaults = {
+    file_ignore_patterns = { "node_modules" },
     vimgrep_arguments = {
       "rg",
       "--color=never",
@@ -47,7 +48,7 @@ telescope.setup {
       case_mode = "smart_case" -- or "ignore_case" or "respect_case"
       -- the default case_mode is "smart_case"
     }
-  }
+  },
 }
 telescope.load_extension("ui-select")
 telescope.load_extension("fzf")
