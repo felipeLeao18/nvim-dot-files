@@ -36,6 +36,8 @@ return packer.startup(function(use)
   -- My plugins here
   -- LSP
   use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
+use  'jose-elias-alvarez/nvim-lsp-ts-utils' 
+
   use "wbthomason/packer.nvim" -- Have packer manage itself
 use {
   'nvim-lualine/lualine.nvim',
