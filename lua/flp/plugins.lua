@@ -168,15 +168,7 @@ use  'peitalin/vim-jsx-typescript'
   use 'lewis6991/impatient.nvim'
   use 'Mofiqul/dracula.nvim'
   use({ 'rose-pine/neovim', as = 'rose-pine' })
-  use({
-	"Pocco81/auto-save.nvim",
-	config = function()
-		 require("auto-save").setup {
-			-- your config goes here
-			-- or just leave it empty :)
-		 }
-	end,
-})
+  use "EdenEast/nightfox.nvim" -- Packer
   -- Packer
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then require("packer").sync() end
