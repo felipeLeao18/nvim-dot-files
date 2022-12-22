@@ -5,7 +5,7 @@ vim.keymap.set('n', '<space>di', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
-
+vim.keymap.set('n', 'gD', vim.lsp.buf.definition, opts)
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local function on_attach(client, bufnr)
@@ -25,7 +25,6 @@ local function on_attach(client, bufnr)
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   -- local bufopts = {noremap = true, silent = true, buffer = bufnr}
   -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gD', vim.lsp.buf.definition, bufopts)
   -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   -- vim.keymap.set('n', '<space>gti', vim.lsp.buf.implementation, bufopts)
   -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
@@ -110,7 +109,6 @@ init_options = require("nvim-lsp-ts-utils").init_options,
         ts_utils.setup_client(client)
 
         -- no default maps, so you may want to define some here
-        local opts = { silent = true }
     end,
 }
 require('lspconfig')['rust_analyzer'].setup {
