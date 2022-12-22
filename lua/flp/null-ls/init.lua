@@ -11,8 +11,7 @@ null_ls.setup({
         '--no-keep-simple-function-one-line', '--no-break-after-operator', '--column-limit=100',
         '--break-after-table-lb', '--indent-width=2'
       }
-    }), formatting.isort, formatting.codespell.with({filetypes = {'markdown'}}),
-    diagnostics.eslint_d, actions.eslint_d
+    }), formatting.isort, formatting.codespell.with({filetypes = {'markdown'}})
   },
   on_attach = function(client)
     if client.server_capabilities.document_formatting then

@@ -23,8 +23,8 @@ local function on_attach(client, bufnr)
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  -- local bufopts = {noremap = true, silent = true, buffer = bufnr}
-  -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+   -- local bufopts = {noremap = true, silent = true, buffer = bufnr}
+   -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   -- vim.keymap.set('n', '<space>gti', vim.lsp.buf.implementation, bufopts)
   -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
@@ -52,7 +52,7 @@ require('lspconfig')['tsserver'].setup {
   capabilities = capabilities,
   on_attach = on_attach,
   flags = lsp_flags,
-init_options = require("nvim-lsp-ts-utils").init_options,
+  init_options = require("nvim-lsp-ts-utils").init_options,
     --
     on_attach = function(client, bufnr)
         local ts_utils = require("nvim-lsp-ts-utils")
