@@ -26,7 +26,7 @@ if not status_ok then return end
 packer.init {
   display = {
     open_fn = function()
-      return require("packer.util").float {border = "rounded"}
+      return require("packer.util").float { border = "rounded" }
     end
   }
 }
@@ -36,14 +36,14 @@ return packer.startup(function(use)
   -- My plugins here
   -- LSP
   use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
-use  'jose-elias-alvarez/nvim-lsp-ts-utils'
+  use 'jose-elias-alvarez/nvim-lsp-ts-utils'
 
   use "wbthomason/packer.nvim" -- Have packer manage itself
-use {
-  'nvim-lualine/lualine.nvim',
-}
-use  'leafgarland/typescript-vim'
-use  'peitalin/vim-jsx-typescript'
+  use {
+    'nvim-lualine/lualine.nvim',
+  }
+  use 'leafgarland/typescript-vim'
+  use 'peitalin/vim-jsx-typescript'
 
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
@@ -54,16 +54,16 @@ use  'peitalin/vim-jsx-typescript'
   use {
     "nvim-telescope/telescope.nvim",
     requires = {
-      {"nvim-telescope/telescope-fzf-native.nvim", run = "make"},
-      {"nvim-telescope/telescope-file-browser.nvim"}, {"kyazdani42/nvim-web-devicons"},
-      {"nvim-telescope/telescope-ui-select.nvim"}
+      { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+      { "nvim-telescope/telescope-file-browser.nvim" }, { "kyazdani42/nvim-web-devicons" },
+      { "nvim-telescope/telescope-ui-select.nvim" }
     }
   }
   -- cokeline
   use({
     "noib3/nvim-cokeline",
-        requires = {
-       {"kyazdani42/nvim-web-devicons"}
+    requires = {
+      { "kyazdani42/nvim-web-devicons" }
     }
 
 
@@ -80,9 +80,9 @@ use  'peitalin/vim-jsx-typescript'
         "nvim-treesitter/nvim-treesitter-textobjects",
         commit = "b00b344c0f5a0a458d6e66eb570cfb347ebf4c38"
       }, -- {"nvim-treesitter/nvim-treesitter-textobjects"},
-      {"RRethy/nvim-treesitter-textsubjects"}, {"nvim-treesitter/playground", opt = true},
-      {"lewis6991/nvim-treesitter-context"}, {"p00f/nvim-ts-rainbow"},
-      {"windwp/nvim-ts-autotag"}
+      { "RRethy/nvim-treesitter-textsubjects" }, { "nvim-treesitter/playground", opt = true },
+      { "lewis6991/nvim-treesitter-context" }, { "p00f/nvim-ts-rainbow" },
+      { "windwp/nvim-ts-autotag" }
     }
   }
   -- nvim tree
@@ -101,21 +101,22 @@ use  'peitalin/vim-jsx-typescript'
 
   -- neoscroll
   use 'karb94/neoscroll.nvim'
-  use({"glepnir/lspsaga.nvim", branch = "main"})
+  use({ "glepnir/lspsaga.nvim", branch = "main" })
   -- Nvim cmp
   use {
     "hrsh7th/nvim-cmp",
     as = "cmp",
     requires = {
-    {"onsails/lspkind-nvim"},
-        {"hrsh7th/cmp-nvim-lsp", requires = {"neovim/nvim-lspconfig"}},
-        {"hrsh7th/cmp-buffer"},
-        {"saadparwaiz1/cmp_luasnip"},
-        {"hrsh7th/cmp-path"},
-        {"f3fora/cmp-spell"},
-        {"hrsh7th/cmp-nvim-lsp-signature-help"},
-        {"tzachar/cmp-tabnine", run = "./install.sh"},
-        {"rcarriga/cmp-dap"}}
+      { "onsails/lspkind-nvim" },
+      { "hrsh7th/cmp-nvim-lsp", requires = { "neovim/nvim-lspconfig" } },
+      { "hrsh7th/cmp-buffer" },
+      { "saadparwaiz1/cmp_luasnip" },
+      { "hrsh7th/cmp-path" },
+      { "f3fora/cmp-spell" },
+      { "hrsh7th/cmp-nvim-lsp-signature-help" },
+      { "tzachar/cmp-tabnine", run = "./install.sh" },
+      { "rcarriga/cmp-dap" }
+    }
   }
 
   -- multi-cursors
@@ -132,12 +133,12 @@ use  'peitalin/vim-jsx-typescript'
     config = function()
       require("null-ls").setup()
     end,
-    requires = {"nvim-lua/plenary.nvim"}
+    requires = { "nvim-lua/plenary.nvim" }
   })
   use "folke/zen-mode.nvim"
-  use {"akinsho/toggleterm.nvim", tag = '*'}
+  use { "akinsho/toggleterm.nvim", tag = '*' }
   use "rafamadriz/friendly-snippets"
-  use {"L3MON4D3/LuaSnip"}
+  use { "L3MON4D3/LuaSnip" }
   use "morhetz/gruvbox"
   use "tpope/vim-surround"
   use 'alvan/vim-closetag'
@@ -150,23 +151,23 @@ use  'peitalin/vim-jsx-typescript'
   }
   use "ThePrimeagen/vim-be-good"
   use {
-  "nvim-neotest/neotest",
-  requires = {
-    "nvim-lua/plenary.nvim",
-    "nvim-treesitter/nvim-treesitter",
-    "antoinemadec/FixCursorHold.nvim",
+    "nvim-neotest/neotest",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim",
       'haydenmeade/neotest-jest'
-  }
-}
-   -- DAP
-    use {"mfussenegger/nvim-dap"}
-    use {"rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}}
-    use {"mxsdev/nvim-dap-vscode-js", requires = {"mfussenegger/nvim-dap"}}
-    use {
-      "microsoft/vscode-js-debug",
-      opt = true,
-      run = "npm install --legacy-peer-deps && npm run compile"
     }
+  }
+  -- DAP
+  use { "mfussenegger/nvim-dap" }
+  use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+  use { "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } }
+  use {
+    "microsoft/vscode-js-debug",
+    opt = true,
+    run = "npm install --legacy-peer-deps && npm run compile"
+  }
   use 'lewis6991/impatient.nvim'
   use 'Mofiqul/dracula.nvim'
   use({ 'rose-pine/neovim', as = 'rose-pine' })

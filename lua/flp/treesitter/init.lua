@@ -4,7 +4,7 @@ configs.setup {
     enable = true
   },
   ensure_installed = "all",
-  sync_install = false, 
+  sync_install = false,
   ignore_install = { "phpdoc" }, -- List of parsers to ignore installing
   highlight = {
     enable = true, -- false will disable the whole extension
@@ -14,11 +14,11 @@ configs.setup {
   },
   indent = { enable = true, disable = { "" } },
   rainbow = {
-  enable = true,
-  -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-  extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-  max_file_lines = nil -- Do not enable for files with more than n lines, int
-  -- colors = {}, -- table of hex strings
-  -- termcolors = {} -- table of colour name strings
-  } 
+    enable = true,
+    -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    max_file_lines = nil -- Do not enable for files with more than n lines, int
+    -- colors = {}, -- table of hex strings
+    -- termcolors = {} -- table of colour name strings
+  }
 }
