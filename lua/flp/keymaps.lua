@@ -81,3 +81,6 @@ keymap("n", "<leader>gg", ":LazyGit<cr>", opts)
 keymap("n", "<leader>z", ":ZenMode<cr>", opts)
 
 keymap("n", "<leader>gb", ":Gitsigns blame_line<CR>", opts)
+
+vim.cmd('imap <silent><script><expr> <C-j> copilot#Accept("")')
+vim.cmd("let g:copilot_no_tab_map = v:true")

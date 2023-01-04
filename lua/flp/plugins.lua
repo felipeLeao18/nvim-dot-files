@@ -172,6 +172,7 @@ return packer.startup(function(use)
   use 'Mofiqul/dracula.nvim'
   use({ 'rose-pine/neovim', as = 'rose-pine' })
   use "EdenEast/nightfox.nvim" -- Packer
+  use 'mhartington/oceanic-next'
   -- Packer
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then require("packer").sync() end
