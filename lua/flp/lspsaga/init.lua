@@ -1,4 +1,3 @@
-
 require('lspsaga').setup({
   ui = {
   border = 'rounded'
@@ -21,8 +20,9 @@ keymap("n", "gr", "<cmd>Lspsaga rename<CR>", { silent = true })
 -- you can edit the definition file in this flaotwindow
 -- also support open/vsplit/etc operation check definition_action_keys
 -- support tagstack C-t jump back
-keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { silent = false })
+keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
 
+keymap("n","gD", "<cmd>Lspsaga goto_definition<CR>")
 -- Show line diagnostics
 keymap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
 

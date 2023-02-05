@@ -84,3 +84,6 @@ keymap("n", "<leader>gb", ":Gitsigns blame_line<CR>", opts)
 
 vim.cmd('imap <silent><script><expr> <C-j> copilot#Accept("")')
 vim.cmd("let g:copilot_no_tab_map = v:true")
+
+-- format file
+keymap("n", "<leader>fo", "<cmd>lua vim.lsp.buf.format {async=true}<CR>", opts)

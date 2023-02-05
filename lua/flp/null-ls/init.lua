@@ -8,6 +8,7 @@ null_ls.setup({
   sources = {
     formatting.black, formatting.gofmt, formatting.shfmt, formatting.clang_format,
     formatting.rustfmt,
+    formatting.csharpier,
     formatting.cmake_format, formatting.dart_format, formatting.lua_format.with({
       extra_args = {
         '--no-keep-simple-function-one-line', '--no-break-after-operator', '--column-limit=100',
