@@ -87,3 +87,9 @@ vim.cmd("let g:copilot_no_tab_map = v:true")
 
 -- format file
 keymap("n", "<leader>fo", "<cmd>lua vim.lsp.buf.format {async=true}<CR>", opts)
+
+
+-- rest
+keymap("n", "<leader>rr", ":lua require('rest-nvim').run()<CR>", opts)
+
+
