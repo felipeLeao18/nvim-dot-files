@@ -9,7 +9,7 @@ local dark = get_hex("Normal", "bg")
 local text = get_hex("Comment", "fg")
 local grey = get_hex("ColorColumn", "bg")
 local light = get_hex("Comment", "fg")
-local high = "#7020d1"
+local high = "#4820f9"
 
 require("cokeline").setup(
     {
