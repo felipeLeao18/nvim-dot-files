@@ -7,15 +7,14 @@ lsp.ensure_installed({
   'jsonls',
   'cssls',
   'html',
-  'eslint',
-  'sumneko_lua',
+  'eslint'
 })
 
 lsp.configure('eslint', {
   on_attach = function(client)
     client.server_capabilities.document_formatting = true
 
-    local autogroup_eslint_lsp = vim.api.nvim_create_augroup("eslint_lsp", {clear = true})
+    local autogroup_eslint_lsp = vim.api.nvim_create_augroup("eslint_lsp", { clear = true })
 
     vim.api.nvim_create_autocmd("BufWritePre", {
       pattern = "*",
@@ -25,9 +24,24 @@ lsp.configure('eslint', {
   end
 })
 
-lsp.set_preferences({
-   set_lsp_keymaps = {omit = {'gr', 'gd', ']d', '[d', 'gD'}},
+lsp.configure('rust-analyzer', {
+  settings = {
+    ["rust-analyzer"] = {
+      checkOnSave = { command = "clippy" },
+      procMacro = {
+        attributes = {
+          enable = true
+        },
+        enable = true
+      }
+    }
+  }
 })
+
+lsp.set_preferences({
+  set_lsp_keymaps = { omit = { 'gr', 'gd', ']d', '[d', 'gD' } },
+})
+
 
 
 lsp.setup()

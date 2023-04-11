@@ -1,7 +1,9 @@
 require('lspsaga').setup({
-  ui = {
-  border = 'rounded'
-  }
+  finder = {
+    border = 'rounded',
+    width = 0.8,
+    height = 0.8,
+  },
 })
 local keymap = vim.keymap.set
 -- Lsp finder find the symbol definition implement reference
@@ -11,7 +13,7 @@ local keymap = vim.keymap.set
 keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
 
 -- Code action
-keymap({"n","v"}, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
+keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
 
 -- Rename
 keymap("n", "gr", "<cmd>Lspsaga rename<CR>", { silent = true })
@@ -22,7 +24,7 @@ keymap("n", "gr", "<cmd>Lspsaga rename<CR>", { silent = true })
 -- support tagstack C-t jump back
 keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
 
-keymap("n","gD", "<cmd>Lspsaga goto_definition<CR>")
+keymap("n", "gD", "<cmd>Lspsaga goto_definition<CR>")
 -- Show line diagnostics
 keymap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
 
@@ -40,7 +42,7 @@ keymap("n", "]E", function()
 end, { silent = true })
 
 -- Outline
-keymap("n","<leader>o", "<cmd>Lspsaga outline<CR>",{ silent = true })
+keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>", { silent = true })
 
 -- Hover Doc
 keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })

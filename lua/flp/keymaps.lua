@@ -87,3 +87,6 @@ vim.cmd("let g:copilot_no_tab_map = v:true")
 
 -- format file
 keymap("n", "<leader>fo", "<cmd>lua vim.lsp.buf.format {async=true}<CR>", opts)
+
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "<C-u>", "<C-u>zz", opts)
