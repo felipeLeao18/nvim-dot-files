@@ -117,32 +117,6 @@ cmp.setup(
   }
 )
 
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(
-  "/",
-  {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-      {name = "buffer"}
-    }
-  }
-)
-
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(
-  ":",
-  {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources(
-      {
-        {name = "path"}
-      },
-      {
-        {name = "cmdline"}
-      }
-    )
-  }
-)
 
 -- If you want insert `(` after select function or method item
 local is_cmp_autopairs_ok, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
