@@ -101,6 +101,7 @@ return packer.startup(function(use)
   -- Colorschemes
   use "lunarvim/colorschemes"
 
+	use("neanias/everforest-nvim") -- Everforest theme
   -- neoscroll
   use 'karb94/neoscroll.nvim'
   use({ "glepnir/lspsaga.nvim", branch = "main" })
@@ -194,14 +195,9 @@ return packer.startup(function(use)
       { 'rafamadriz/friendly-snippets' }, -- Optional
     }
   }
-  use 'aktersnurra/no-clown-fiesta.nvim'
 
-  use { 'xiyaowong/nvim-transparent', config = function()
-    require('transparent').setup({
-      enable = true,
-      extra_groups = { "NvimTreeNormal", "FloatBorder" },
-    })
-  end }
+  use 'aktersnurra/no-clown-fiesta.nvim'
+  use 'norcalli/nvim-colorizer.lua'
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
     setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 

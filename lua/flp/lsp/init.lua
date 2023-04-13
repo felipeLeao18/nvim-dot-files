@@ -38,10 +38,4 @@ lsp.configure('rust-analyzer', {
   }
 })
 
-lsp.set_preferences({
-  set_lsp_keymaps = { omit = { 'gr', 'gd', ']d', '[d', 'gD' } },
-})
-
-
-
 lsp.setup()

@@ -73,7 +73,7 @@ local function ins_left(component)
   table.insert(config.sections.lualine_c, component)
 end
 
--- Inserts a component in lualine_x ot right section
+-- Inserts a component in lualine_x at right section
 local function ins_right(component)
   table.insert(config.sections.lualine_x, component)
 end
@@ -132,7 +132,7 @@ ins_left {
   color = { fg = colors.magenta, gui = 'bold' },
 }
 
-ins_left { 'location' }
+ins_right { 'location' }
 
 ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
@@ -158,7 +158,7 @@ ins_left {
 ins_left {
   -- Lsp server name .
   function()
-    local msg = 'No Active Lsp'
+    local msg = 'none'
     local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
     local clients = vim.lsp.get_active_clients()
     if next(clients) == nil then
@@ -167,27 +167,25 @@ ins_left {
     for _, client in ipairs(clients) do
       local filetypes = client.config.filetypes
       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        return client.name
+        if client.name == 'copilot' or client.name == 'null-ls' then
+          return msg
+        else
+          return client.name
+        end
       end
     end
     return msg
   end,
   icon = ' LSP:',
-  color = { fg = '#00FFFF', gui = 'bold' },
+  color = { fg = '#ffffff', gui = 'bold' },
 }
 
 -- Add components to right sections
-ins_right {
-  'o:encoding', -- option component same as &encoding in viml
-  fmt = string.upper, -- I'm not sure why it's upper case either ;)
-  cond = conditions.hide_in_width,
-  color = { fg = colors.green, gui = 'bold' },
-}
 
 ins_right {
   'fileformat',
   fmt = string.upper,
-  icons_enabled = true, -- I think icons are cool but Eviline doesn't have them. sigh
+  icons_enabled = true, 
   color = { fg = colors.green, gui = 'bold' },
 }
 
@@ -199,7 +197,6 @@ ins_right {
 
 ins_right {
   'diff',
-  -- Is it me or the symbol for modified us really weird
   symbols = { added = ' ', modified = '柳 ', removed = ' ' },
   diff_color = {
     added = { fg = colors.green },
@@ -217,5 +214,4 @@ ins_right {
   padding = { left = 1 },
 }
 
--- Now don't forget to initialize lualine
 lualine.setup(config)
