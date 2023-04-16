@@ -1,6 +1,5 @@
 local fn = vim.fn
 
--- Automatically install packer
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system {
@@ -10,7 +9,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd [[
   augroup packer_user_config
     autocmd!
@@ -18,11 +16,9 @@ vim.cmd [[
   augroup end
 ]]
 
--- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then return end
 
--- Have packer use a popup window
 packer.init {
   display = {
     open_fn = function()
@@ -31,37 +27,32 @@ packer.init {
   }
 }
 
--- Install your plugins here
 return packer.startup(function(use)
-  -- My plugins here
-  -- LSP
-  use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
+  use 'neovim/nvim-lspconfig'
   use 'jose-elias-alvarez/nvim-lsp-ts-utils'
 
-  use "wbthomason/packer.nvim" -- Have packer manage itself
+  use "wbthomason/packer.nvim"
   use {
     'nvim-lualine/lualine.nvim',
   }
   use 'leafgarland/typescript-vim'
   use 'peitalin/vim-jsx-typescript'
 
-  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  use "nvim-lua/popup.nvim"
+  use "nvim-lua/plenary.nvim"
   use "arcticicestudio/nord-vim"
   use "windwp/nvim-autopairs"
   use 'sainnhe/everforest'
-  -- telescope
   use {
     "nvim-telescope/telescope.nvim",
     requires = {
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
       { "nvim-telescope/telescope-file-browser.nvim" }, { "kyazdani42/nvim-web-devicons" },
       { "nvim-telescope/telescope-ui-select.nvim" },
-      {'nvim-lua/popup.nvim'},
-      {'nvim-telescope/telescope-media-files.nvim'}
+      { 'nvim-lua/popup.nvim' },
+      { 'nvim-telescope/telescope-media-files.nvim' }
     }
   }
-  -- cokeline
   use({
     "noib3/nvim-cokeline",
     requires = {
@@ -71,9 +62,7 @@ return packer.startup(function(use)
 
   })
 
-  -- bdelete
   use "Asheq/close-buffers.vim"
-  -- Treesitter
   use {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
@@ -81,31 +70,31 @@ return packer.startup(function(use)
       {
         "nvim-treesitter/nvim-treesitter-textobjects",
         commit = "b00b344c0f5a0a458d6e66eb570cfb347ebf4c38"
-      }, -- {"nvim-treesitter/nvim-treesitter-textobjects"},
+      },
       { "RRethy/nvim-treesitter-textsubjects" }, { "nvim-treesitter/playground", opt = true },
       { "lewis6991/nvim-treesitter-context" }, { "p00f/nvim-ts-rainbow" },
       { "windwp/nvim-ts-autotag" }
     }
   }
-  -- nvim tree
+
   use {
     'kyazdani42/nvim-tree.lua',
     requires = {
-      'kyazdani42/nvim-web-devicons' -- optional, for file icons
+      'kyazdani42/nvim-web-devicons'
     },
-    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    tag = 'nightly'
   }
-  -- Git
+
   use "lewis6991/gitsigns.nvim"
 
-  -- Colorschemes
+
   use "lunarvim/colorschemes"
 
-	use("neanias/everforest-nvim") -- Everforest theme
-  -- neoscroll
+  use("neanias/everforest-nvim")
+
   use 'karb94/neoscroll.nvim'
   use({ "glepnir/lspsaga.nvim", branch = "main" })
-  -- Nvim cmp
+
   use {
     "hrsh7th/nvim-cmp",
     as = "cmp",
@@ -122,22 +111,15 @@ return packer.startup(function(use)
     }
   }
 
-  -- multi-cursors
+
   use "mg979/vim-visual-multi"
-  -- Lazygit
+
   use 'kdheepak/lazygit.nvim'
-  -- comments
+
   use 'terrortylor/nvim-comment'
 
   use 'onsails/lspkind.nvim'
 
-  use({
-    "jose-elias-alvarez/null-ls.nvim",
-    config = function()
-      require("null-ls").setup()
-    end,
-    requires = { "nvim-lua/plenary.nvim" }
-  })
   use "folke/zen-mode.nvim"
   use { "akinsho/toggleterm.nvim", tag = '*' }
   use "rafamadriz/friendly-snippets"
@@ -162,37 +144,37 @@ return packer.startup(function(use)
       'haydenmeade/neotest-jest'
     }
   }
-  -- DAP
+
   use { "mfussenegger/nvim-dap" }
   use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
   use { "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } }
   use 'lewis6991/impatient.nvim'
   use 'Mofiqul/dracula.nvim'
   use({ 'rose-pine/neovim', as = 'rose-pine' })
-  use "EdenEast/nightfox.nvim" -- Packer
+  use "EdenEast/nightfox.nvim"
   use 'mhartington/oceanic-next'
-  -- lspzero
-  --
+
+
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
     requires = {
-      -- LSP Support
-      { 'neovim/nvim-lspconfig' }, -- Required
-      { 'williamboman/mason.nvim' }, -- Optional
-      { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
-      -- Autocompletion
-      { 'hrsh7th/nvim-cmp' }, -- Required
-      { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-      { 'hrsh7th/cmp-buffer' }, -- Optional
-      { 'hrsh7th/cmp-path' }, -- Optional
-      { 'saadparwaiz1/cmp_luasnip' }, -- Optional
-      { 'hrsh7th/cmp-nvim-lua' }, -- Optional
+      { 'neovim/nvim-lspconfig' },
+      { 'williamboman/mason.nvim' },
+      { 'williamboman/mason-lspconfig.nvim' },
 
-      -- Snippets
-      { 'L3MON4D3/LuaSnip' }, -- Required
-      { 'rafamadriz/friendly-snippets' }, -- Optional
+
+      { 'hrsh7th/nvim-cmp' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'hrsh7th/cmp-nvim-lua' },
+
+
+      { 'L3MON4D3/LuaSnip' },
+      { 'rafamadriz/friendly-snippets' },
     }
   }
 
@@ -201,7 +183,7 @@ return packer.startup(function(use)
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
     setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
-  -- Packer
-  -- Put this at the end after all plugins
+
+
   if PACKER_BOOTSTRAP then require("packer").sync() end
 end)
