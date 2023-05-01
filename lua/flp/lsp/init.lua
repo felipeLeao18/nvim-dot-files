@@ -1,7 +1,12 @@
 local lsp = require('lsp-zero')
 
-lsp.preset('recommended')
-
+lsp.preset({
+  float_border = 'none',
+  configure_diagnostics = false,
+  manage_nvim_cmp = {
+    set_sources = 'recommended'
+  }
+})
 lsp.ensure_installed({
   'tsserver',
   'jsonls',

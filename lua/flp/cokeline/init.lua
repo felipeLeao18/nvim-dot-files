@@ -9,7 +9,7 @@ local dark = get_hex("Normal", "bg")
 local text = get_hex("Comment", "fg")
 local grey = get_hex("ColorColumn", "bg")
 local light = get_hex("Comment", "fg")
-local high = "#f3f5d9"
+local high = "#f3f5d1"
 
 require("cokeline").setup(
   {
@@ -31,7 +31,6 @@ require("cokeline").setup(
       {
         text = function(buffer)
           if buffer.index ~= 1 then
-            return ""
           end
           return ""
         end,
@@ -79,7 +78,7 @@ require("cokeline").setup(
         end
       },
       {
-        text = "",
+        text = "",
         fg = function(buffer)
           if buffer.is_focused then
             return high

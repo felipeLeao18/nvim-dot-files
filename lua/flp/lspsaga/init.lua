@@ -4,6 +4,12 @@ require('lspsaga').setup({
     width = 0.8,
     height = 0.8,
   },
+  diagnostic = {
+    border = 'rounded',
+    width = 0.8,
+    height = 0.8,
+  },
+  
 })
 local keymap = vim.keymap.set
 -- Lsp finder find the symbol definition implement reference
