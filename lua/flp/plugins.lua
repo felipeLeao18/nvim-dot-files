@@ -180,6 +180,17 @@ return packer.startup(function(use)
   use 'aktersnurra/no-clown-fiesta.nvim'
   use 'norcalli/nvim-colorizer.lua'
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
+    use 'mfussenegger/nvim-dap',
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } },
+
+    use 'folke/neodev.nvim',
+    use {
+      "microsoft/vscode-js-debug",
+      opt = true,
+      run = "npm install --legacy-peer-deps && npm run compile"
+    },
+
+    use {"mxsdev/nvim-dap-vscode-js", requires = {"mfussenegger/nvim-dap"}},
 
 
     setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
