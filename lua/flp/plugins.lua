@@ -30,6 +30,7 @@ packer.init {
 return packer.startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'jose-elias-alvarez/nvim-lsp-ts-utils'
+  use 'RRethy/vim-illuminate'
 
   use "wbthomason/packer.nvim"
   use {
@@ -114,10 +115,9 @@ return packer.startup(function(use)
   use "mg979/vim-visual-multi"
 
   use 'kdheepak/lazygit.nvim'
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   use 'terrortylor/nvim-comment'
-
-  use 'onsails/lspkind.nvim'
 
   use "folke/zen-mode.nvim"
   use { "akinsho/toggleterm.nvim", tag = '*' }
@@ -152,6 +152,7 @@ return packer.startup(function(use)
   use({ 'rose-pine/neovim', as = 'rose-pine' })
   use "EdenEast/nightfox.nvim"
   use 'mhartington/oceanic-next'
+  use 'rmehri01/onenord.nvim'
 
 
   use {
@@ -176,12 +177,9 @@ return packer.startup(function(use)
       { 'rafamadriz/friendly-snippets' },
     }
   }
-
   use 'aktersnurra/no-clown-fiesta.nvim'
   use 'norcalli/nvim-colorizer.lua'
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
-    use 'mfussenegger/nvim-dap',
-    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } },
 
     use 'folke/neodev.nvim',
     use {
@@ -190,7 +188,6 @@ return packer.startup(function(use)
       run = "npm install --legacy-peer-deps && npm run compile"
     },
 
-    use {"mxsdev/nvim-dap-vscode-js", requires = {"mfussenegger/nvim-dap"}},
 
 
     setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
