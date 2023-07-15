@@ -13,22 +13,6 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-local status_tabnine_ok, tabnine = pcall(require, "cmp_tabnine.config")
-if not status_tabnine_ok then
-  return
-end
-
-tabnine:setup(
-  {
-    max_lines = 750,
-    max_num_results = 10,
-    sort = true,
-    run_on_every_keystroke = true,
-    ignored_file_types = {},
-    show_prediction_strength = false
-  }
-)
-
 cmp.setup(
   {
     snippet = {
@@ -82,7 +66,6 @@ cmp.setup(
       {
         {name = "nvim_lsp"},
         {name = "luasnip"},
-        {name = "cmp_tabnine", max_item_count = 3},
         {name = "nvim_lsp_signature_help"}
       },
       {
@@ -108,7 +91,6 @@ cmp.setup(
             luasnip = "[LuaSnip]",
             nvim_lua = "[Lua]",
             latex_symbols = "[Latex]",
-            cmp_tabnine = "[TabNine]",
             emoji = "[Emoji]"
           })
         }

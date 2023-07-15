@@ -1,4 +1,4 @@
-require('impatient')
+# require('impatient')
 require('flp.plugins')
 require('flp.luasnip')
 require('flp.options')

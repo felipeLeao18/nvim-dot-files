@@ -1,8 +1,8 @@
 require('lspsaga').setup({
   finder = {
     border = 'rounded',
-    width = 0.8,
-    height = 0.8,
+    width = 2,
+    height = 2,
   },
   diagnostic = {
     border = 'rounded',
@@ -16,7 +16,7 @@ local keymap = vim.keymap.set
 -- if there is no implement it will hide
 -- when you use action in finder like open vsplit then you can
 -- use <C-t> to jump back
-keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
+keymap("n", "gh", "<cmd>Lspsaga finder<CR>", { silent = true })
 
 -- Code action
 keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
